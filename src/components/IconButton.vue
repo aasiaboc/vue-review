@@ -24,7 +24,7 @@ const props = defineProps({
         <font-awesome-icon 
             :icon="props.icon" 
             class="iconSize"
-            :style="{color: props.iconColor, fontsize: '20px'}"
+            :style="{color: props.iconColor}"
         />
     </button>
 </template>
