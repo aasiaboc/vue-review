@@ -44,33 +44,33 @@ function deleteTask(index) {
 <style>
 html, body, #app {
   margin: 0;
-  padding: 0;
+  padding: 10px;
   background-color: #F3F3F3;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
+  flex: 1;
+  overflow-y: auto;
 }
 .title{
   color: #29353C;            
   font-size: 60px;           
   letter-spacing: 10px;  
+  text-align: center;
   font-family: 'Poppins';    
   font-weight: medium;  
-  margin-bottom: 10px;      
 }
 .container{
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #F9F9F9;
-  padding-top:40px;
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-bottom: 50px;
-  width: 599px;
-  height: 533px;
+  padding: 20px;
+  width: 100%;
+  max-width: 600px;
+  min-height: 400px;
+  height: 550px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease;
@@ -95,6 +95,7 @@ html, body, #app {
   font-size: 20px;
   color: #29353C;
   padding-left: 10px;
+
 }
 .scrollableList {
   flex: 1;
@@ -104,5 +105,20 @@ html, body, #app {
 }
 
 
+/* mobile adjustments */
+@media (max-width: 480px) {
+  .title {
+    font-size: 10vw;
+    letter-spacing: 3px;
+    text-align: center;
+  }
 
+  .inputContainer input {
+    font-size: 1rem;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+}
 </style>

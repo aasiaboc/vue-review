@@ -19,7 +19,7 @@ const emit = defineEmits(['toggle', 'delete'])
             :style="{ color: task.done ? '#768A96' : '#44576D', cursor: 'pointer' }"
             @click="emit('toggle', index)"
             />
-            <h1 :class="{ done: task.done }">{{ task.name }}</h1>
+            <p :class="{ done: task.done }">{{ task.name }}</p>
         </div>
         <font-awesome-icon
             :icon="['far', 'trash-can']"
@@ -36,7 +36,6 @@ const emit = defineEmits(['toggle', 'delete'])
     flex-direction: row;
     align-items: center;
     width: 100%;
-    height: 40px;
     justify-content: space-between;
     margin-bottom: 10px;
     padding-left: 15px;
@@ -45,18 +44,22 @@ const emit = defineEmits(['toggle', 'delete'])
 .textContainer {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    height: 30px;
+    align-items: center; 
     width: 100%;
+    gap: 10px;
 }
 
-h1 {
+p {
     font-size: 20px;
-    margin-left: 13px;
+    margin: 0 13px 0 13px;
     color: #29353C;
+    word-break: break-word;
+    white-space: normal;
+    flex: 1;
 }
 .done {
     text-decoration: line-through;
     color: '#768A96';
+
 }
 </style>
