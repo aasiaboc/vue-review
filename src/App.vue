@@ -21,6 +21,16 @@ function toggleTask(index) {
 function deleteTask(index) {
   tasks.value.splice(index, 1)
 }
+
+function editTask(index) {
+  const newName = prompt('Edit task name:', tasks.value[index].name)
+  if (newName !== null && newName.trim() !== '') {
+    tasks.value[index].name = newName.trim()
+  }
+}
+
+
+
 </script>
 
 <template>
@@ -35,6 +45,7 @@ function deleteTask(index) {
       :tasks="tasks" 
       @toggle="toggleTask" 
       @delete="deleteTask" 
+      @edit="editTask"
     />
     </div>
     

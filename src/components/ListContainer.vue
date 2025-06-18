@@ -4,7 +4,7 @@ const props = defineProps({
     tasks: Array
 })
 
-const emit = defineEmits(['toggle', 'delete'])
+const emit = defineEmits(['toggle', 'delete', 'edit'])
 </script>
 
 <template>
@@ -22,10 +22,16 @@ const emit = defineEmits(['toggle', 'delete'])
             <p :class="{ done: task.done }">{{ task.name }}</p>
         </div>
         <font-awesome-icon
+            :icon="['fas', 'pencil']"
+            :style="{ color: '#44576D', cursor: 'pointer', paddingRight: '20px' }"
+            @click="emit('edit', index)"
+        />
+        <font-awesome-icon
             :icon="['far', 'trash-can']"
             :style="{ color: 'red', cursor: 'pointer' }"
             @click="emit('delete', index)"
         />
+        
     </div>
 
 </template>
