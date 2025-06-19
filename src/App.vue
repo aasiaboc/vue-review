@@ -1,10 +1,11 @@
 <script setup>
 import IconButton from './components/IconButton.vue'
 import ListContainer from './components/ListContainer.vue'
-import {ref} from 'vue'
+import {ref, computed } from 'vue'
 
 const text = ref('')
 const tasks = ref([])
+const filter = ref('all')
 
 function addTask() {
   const trimmed = text.value.trim()
@@ -29,7 +30,14 @@ function editTask(index) {
   }
 }
 
-
+const filteredTasks = computed(() => {
+  if (filter.value === 'completed') {
+    return tasks.value.filter(task => task.done)
+  } else if (filter.value === 'pending') {
+    return tasks.value.filter(task => !task.done)
+  }
+  return tasks.value
+})
 
 </script>
 
@@ -40,9 +48,17 @@ function editTask(index) {
       <input v-model="text" placeholder="Enter task" />
       <IconButton icon="plus" buttonColor="#29353C" iconColor="white" @click="addTask" />
     </div>
+    <div class="filterContainer">
+        <label>Filter: </label>
+        <select v-model="filter">
+            <option value="all">All</option>
+            <option value="pending">Pending</option>
+            <option value="completed">Completed</option>
+        </select>
+    </div>
     <div class="scrollableList">
       <ListContainer 
-      :tasks="tasks" 
+      :tasks="filteredTasks" 
       @toggle="toggleTask" 
       @delete="deleteTask" 
       @edit="editTask"
@@ -103,11 +119,34 @@ html, body, #app {
   flex: 1;
   font-family: 'Poppins';  
   font-weight: normal;  
-  font-size: 20px;
+  font-size: 18px;
   color: #29353C;
   padding-left: 10px;
 
 }
+.filterContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 100%;
+  justify-content: flex-end;
+  font-family: 'Poppins';
+  font-size: 14px;
+  color: #29353C;
+  gap:10px;
+}
+
+.filterContainer select {
+  border: 0;
+  outline: none;
+  background: transparent;
+  border: 1px solid #44576D;
+  border-radius: 20px;
+  background-color: white;
+  color: #29353C;
+  font-family: 'Poppins';
+}
+
 .scrollableList {
   flex: 1;
   overflow-y: auto;
