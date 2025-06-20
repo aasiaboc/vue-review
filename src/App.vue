@@ -15,20 +15,21 @@ function addTask() {
   }
 }
 
-function toggleTask(index) {
-  tasks.value[index].done = !tasks.value[index].done
+function toggleTask(task) {
+  task.done = !task.done
 }
 
-function deleteTask(index) {
-  tasks.value.splice(index, 1)
+function deleteTask(task) {
+  tasks.value.splice(tasks.value.indexOf(task), 1)
 }
 
-function editTask(index) {
-  const newName = prompt('Edit task name:', tasks.value[index].name)
+function editTask(task) {
+  const newName = prompt('Edit task name:', task.name)
   if (newName !== null && newName.trim() !== '') {
-    tasks.value[index].name = newName.trim()
+    task.name = newName.trim()
   }
 }
+
 
 const filteredTasks = computed(() => {
   if (filter.value === 'completed') {

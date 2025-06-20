@@ -17,19 +17,19 @@ const emit = defineEmits(['toggle', 'delete', 'edit'])
             <font-awesome-icon
             :icon="['far', task.done ? 'square-check' : 'square']"
             :style="{ color: task.done ? '#768A96' : '#44576D', cursor: 'pointer' }"
-            @click="emit('toggle', index)"
+            @click="emit('toggle', task)"
             />
             <p :class="{ done: task.done }">{{ task.name }}</p>
         </div>
         <font-awesome-icon
             :icon="['fas', 'pencil']"
             :style="{ color: '#44576D', cursor: 'pointer', paddingRight: '20px' }"
-            @click="emit('edit', index)"
+            @click="emit('edit', task)"
         />
         <font-awesome-icon
             :icon="['far', 'trash-can']"
             :style="{ color: 'red', cursor: 'pointer' }"
-            @click="emit('delete', index)"
+            @click="emit('delete', task)"
         />
         
     </div>
